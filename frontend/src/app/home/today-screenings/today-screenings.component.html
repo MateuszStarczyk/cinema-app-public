@@ -1,0 +1,12 @@
+<div class="tds-list">
+  <div fxLayoutAlign="start center">
+    <h2 class="tds-title">Today screenings</h2>
+    <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="'/screenings'"
+    > Other dates <mat-icon>navigate_next</mat-icon>
+  </button>
+  </div>
+  <app-screenings-list [screenings]="screenings"></app-screenings-list>
+</div>

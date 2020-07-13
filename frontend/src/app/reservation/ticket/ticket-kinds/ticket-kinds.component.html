@@ -1,0 +1,22 @@
+<div>
+  <div class="t-summary">
+    <mat-label id="ticket-total-qty" class="t-horizontal-label">Seats ({{ qty }} total)</mat-label>
+    <mat-label id="ticket-total-price">Total price: {{ totalPrice | number: "1.2" }} zł</mat-label>
+  </div>
+  <table mat-table [dataSource]="ticketKindList" class="t-table">
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <td mat-cell *matCellDef="let kind"> {{kind.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let kind"> {{kind.price | number: "1.2"}} zł</td>
+    </ng-container>
+    <ng-container matColumnDef="qty">
+      <th mat-header-cell *matHeaderCellDef> Qty </th>
+      <td mat-cell *matCellDef="let kind"> {{kind.qty}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

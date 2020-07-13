@@ -1,0 +1,14 @@
+<div fxLayoutAlign="center center">
+  <mat-label class="tk-name tk-field">{{ reservedTicketKind.name }}</mat-label>
+  <mat-label class="tk-field">{{ reservedTicketKind.price | number: "1.2" }} zł</mat-label>
+  <div class="tk-field">
+    <mat-form-field>
+      <mat-label>Qty</mat-label>
+      <mat-select [(ngModel)]="reservedTicketKind.qty" (selectionChange)="qtyChanged()">
+        <mat-option *ngFor="let qty of quantities" [value]="qty">
+          {{ qty }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="sign-up-panel" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-title class="title-text" fxLayoutAlign="center center">
+      Sign Up
+    </mat-card-title>
+    <mat-card-content>
+      <form #signUpForm="ngForm" autocomplete="off">
+        <div>
+          <mat-form-field class="sign-up-form-field">
+            <input
+              matInput
+              placeholder="First Name"
+              [(ngModel)]="newuser.firstName"
+              type="text"
+              name="firstName"
+              maxlength="100"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="sign-up-form-field">
+            <input
+              matInput
+              placeholder="Last Name"
+              [(ngModel)]="newuser.lastName"
+              type="text"
+              name="lastName"
+              maxlength="150"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="sign-up-form-field">
+            <input
+              matInput
+              placeholder="Email"
+              [(ngModel)]="newuser.email"
+              type="email"
+              name="email"
+              email="true"
+              maxlength="100"
+              required
+            />
+            <mat-error>Not a valid email address</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="sign-up-form-field">
+            <input
+              matInput
+              placeholder="Password"
+              [(ngModel)]="newuser.password"
+              type="password"
+              name="password"
+              maxlength="50"
+              required
+              pattern="(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z\d$@$!%*?&].{5,}"
+            />
+            <mat-error
+              >Password must be at least 6 characters long and contain one digit
+              and letter.</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="sign-up-form-field">
+            <input
+              matInput
+              placeholder="Confirm password"
+              type="password"
+              name="confirmPassword"
+              maxlength="50"
+              required
+              ngModel
+              pattern="{{ newuser.password }}"
+            />
+            <mat-error>Passwords don't match</mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+      <mat-card-actions>
+        <div fxLayoutAlign="center center" class="sign-up-button">
+          <button
+            mat-raised-button
+            (click)="signUp()"
+            color="primary"
+            [disabled]="!signUpForm.valid || isLoading"
+          >
+            <label *ngIf="!isLoading"> Sign up </label>
+            <mat-spinner
+              *ngIf="isLoading"
+              class="sign-up-spinner"
+              [diameter]="25"
+            ></mat-spinner>
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div>

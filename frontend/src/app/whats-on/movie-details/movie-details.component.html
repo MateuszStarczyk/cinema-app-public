@@ -1,0 +1,21 @@
+<h1 mat-dialog-title class="details-title">{{ movie.title }}</h1>
+<mat-label class="details-duration">{{ movie.duration }} min</mat-label>
+
+<mat-dialog-content fxLayoutAlign="start start" class="movie-details-content">
+  <div>
+    <img
+      class="details-poster-img"
+      src="{{ movie.posterFilename }}"
+      [src-fallback]="placeholder"
+    />
+  </div>
+  <div>
+    <div class="movie-description list-scroll">{{ movie.description }}</div>
+    <div fxLayoutAlign="center center">
+      <youtube-player [videoId]="movie.trailerUrl"></youtube-player>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="end end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

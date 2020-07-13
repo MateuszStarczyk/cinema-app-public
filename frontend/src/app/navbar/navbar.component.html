@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+  <img
+    [routerLink]="['/']"
+    class="navbar-logo"
+    alt="Cinema Logo"
+    src="/assets/ticket_logo.svg"
+  />
+  <span class="navbar-app-title" [routerLink]="['/']"> Cinema.com </span>
+  <button mat-button [routerLink]="['home']">Home</button>
+  <button mat-button [routerLink]="['screenings']">Screenings</button>
+  <button mat-button [routerLink]="['whats-on']">What's on</button>
+  <button mat-button [routerLink]="['tickets']">Tickets</button>
+  <button mat-button [routerLink]="['my-tickets']" *ngIf="user">My tickets</button>
+  <button mat-button [routerLink]="['tickets-history']" *ngIf="user">Tickets history</button>
+  <span class="spacer"></span>
+  <button mat-button [routerLink]="['login']" *ngIf="!user">Login</button>
+  <button mat-button class="username" *ngIf="user">
+    Hello, {{ user.firstName }}
+  </button>
+  <ng-template ngxPermissionsOnly="ROLE_ADMIN">
+    <button
+      mat-button
+      [matMenuTriggerFor]="menu"
+      #matMenuTrigger="matMenuTrigger"
+      (mouseenter)="matMenuTrigger.openMenu()"
+    >
+      ADMIN
+      <mat-icon>
+        keyboard_arrow_down
+      </mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <div (mouseleave)="matMenuTrigger.closeMenu()">
+        <button mat-menu-item [routerLink]="['admin', 'movies']">
+          Manage movies
+        </button>
+        <button mat-menu-item [routerLink]="['admin', 'tickets']">
+          Manage tickets
+        </button>
+      </div>
+    </mat-menu>
+  </ng-template>
+  <button mat-button [routerLink]="['logout']" *ngIf="user">Logout</button>
+</mat-toolbar>

@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Choose seats</h2>
+<mat-label>{{ selectedSeats.length }} / {{ seatsQty }} chosen</mat-label>
+
+<mat-dialog-content class="choose-seats-content" fxLayoutAlign="center center">
+  <app-seats-plan
+    *ngIf="!isLoading && allSeats?.length > 0"
+    [seats]="allSeats"
+    [selectedSeats]="selectedSeats"
+    (seatSelected)="seatSelected($event)"
+  ></app-seats-plan>
+  <div *ngIf="!isLoading && !(allSeats?.length > 0)">
+    <mat-label>No seats loaded</mat-label>
+  </div>
+  <mat-spinner
+    class="tk-spinner"
+    *ngIf="isLoading"
+    [diameter]="30"
+  ></mat-spinner>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="end end">
+  <button mat-raised-button color="primary" (click)="save()">
+    Save
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,64 @@
+<div class="login-panel" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-title class="title-text" fxLayoutAlign="center center">
+      Log In
+    </mat-card-title>
+    <mat-card-content>
+      <form #loginForm="ngForm">
+        <div>
+          <mat-form-field class="login-form-field">
+            <input
+              matInput
+              placeholder="Email"
+              [(ngModel)]="credentials.email"
+              type="email"
+              name="email"
+              email="true"
+              required
+            />
+            <mat-error>Not a valid email address</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="login-form-field">
+            <input
+              matInput
+              placeholder="Password"
+              [(ngModel)]="credentials.password"
+              type="password"
+              name="password"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </form>
+      <mat-card-actions>
+        <div class="login-action-buttons" fxLayoutAlign="end center">
+          <mat-spinner
+            [style.display]="isLoading ? 'block' : 'none'"
+            [diameter]="30"
+          ></mat-spinner>
+          <button
+            mat-raised-button
+            (click)="login()"
+            color="primary"
+            [disabled]="!loginForm.valid || isLoading"
+          >
+            Login
+          </button>
+        </div>
+        <div class="login-action-buttons" fxLayoutAlign="end center">
+          <span>Don't have an account?</span>
+          <button
+            mat-raised-button
+            color="accent"
+            mat-button
+            [routerLink]="'/sign-up'"
+          >
+            Sign up
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div>

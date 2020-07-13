@@ -1,0 +1,23 @@
+<div>
+  <div *ngFor="let row of rows" fxLayoutAlign="center center">
+    <mat-label>{{ row.id }}</mat-label>
+    <button
+      class="seat-btn"
+      *ngFor="let seat of row.seats"
+      mat-icon-button
+      color="primary"
+      (click)="seatSelection(seat.seatNumber)"
+      [disabled]="!seat.isAvailable"
+      [ngClass]="{
+        available: seat.isAvailable && !selectedSeats.includes(seat.seatNumber),
+        taken: !seat.isAvailable,
+        chosen: selectedSeats.includes(seat.seatNumber)
+      }"
+    >
+      <div fxLayoutAlign="center center">
+        <mat-icon class="seat-icon">event_seat</mat-icon>
+        <mat-label>{{ seat.seatNumber.split('-')[1] }}</mat-label>
+      </div>
+    </button>
+  </div>
+</div>

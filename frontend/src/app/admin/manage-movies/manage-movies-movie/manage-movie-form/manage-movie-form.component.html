@@ -1,0 +1,93 @@
+<div fxLayoutAlign="start start">
+  <mat-card class="movie-form-card">
+    <mat-card-content>
+      <form #movieForm="ngForm" autocomplete="off">
+        <div *ngIf="isEditMode">
+          <mat-label class="form-desc-label">Id:</mat-label>
+          <mat-label>{{movie.id}}</mat-label>
+        </div>
+        <div>
+          <mat-form-field class="movie-form-field">
+            <input
+              matInput
+              placeholder="Title"
+              [(ngModel)]="movie.title"
+              type="text"
+              name="title"
+              maxlength="100"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="movie-form-field">
+            <input
+              matInput
+              placeholder="Duration (mins)"
+              [(ngModel)]="movie.duration"
+              type="number"
+              name="duration"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="start center">
+          <img
+            class="poster-img"
+            src="{{ movie.posterFilename }}"
+            [src-fallback]="placeholder"
+          />
+          <mat-form-field class="poster-form-field">
+            <input
+              matInput
+              placeholder="Poster URL"
+              [(ngModel)]="movie.posterFilename"
+              type="text"
+              name="posterFilename"
+              maxlength="250"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="movie-form-field">
+            <input
+              matInput
+              placeholder="Trailer id (Youtube)"
+              [(ngModel)]="movie.trailerUrl"
+              type="text"
+              name="trailerUrl"
+              maxlength="250"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="movie-form-field">
+            <textarea
+              matInput
+              placeholder="Description"
+              [(ngModel)]="movie.description"
+              type="text"
+              name="description"
+              maxlength="5000"
+              rows="4"
+              required
+            ></textarea>
+          </mat-form-field>
+        </div>
+      </form>
+      <mat-card-actions>
+        <div fxLayoutAlign="end end" class="movie-button">
+          <button
+            mat-raised-button
+            (click)="onSave()"
+            color="primary"
+            [disabled]="!movieForm.valid"
+          >
+            Save
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div>

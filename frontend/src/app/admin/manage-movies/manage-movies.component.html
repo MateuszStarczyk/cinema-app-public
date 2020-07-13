@@ -1,0 +1,15 @@
+<ng-template
+  [ngxPermissionsOnly]="['ROLE_ADMIN']"
+  [ngxPermissionsOnlyThen]="access"
+  [ngxPermissionsOnlyElse]="noAccess"
+>
+</ng-template>
+<ng-template #access>
+  <div class="main-content">
+    <h1 class="title-text">Manage movies & screenings</h1>
+    <app-manage-movies-list></app-manage-movies-list>
+  </div>
+</ng-template>
+<ng-template #noAccess>
+  <app-no-permissions></app-no-permissions>
+</ng-template>

@@ -1,0 +1,35 @@
+<div
+  fxLayoutAlign="space-between center"
+  *ngIf="!isLoading"
+  class="add-screening-main"
+>
+  <div fxLayoutAlign="center center">
+    <mat-label class="add-screening-label">Start date:</mat-label>
+    <mat-form-field class="add-screening-field">
+      <input
+        matInput
+        type="datetime-local"
+        placeholder="date"
+        [(ngModel)]="newScreening.startDate"
+      />
+    </mat-form-field>
+    <mat-label class="add-screening-label">Room:</mat-label>
+    <mat-form-field>
+      <mat-select [(ngModel)]="newScreening.roomId">
+        <mat-option *ngFor="let room of rooms" [value]="room.id">
+          {{ room.id }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-raised-button color="primary" (click)="addScreening()" [disabled]="!newScreening.startDate || !newScreening.roomId">
+      Add
+    </button>
+  </div>
+</div>
+<div *ngIf="isLoading" fxLayoutAlign="start center" class="add-screening-main">
+  <mat-spinner [diameter]="30"></mat-spinner>
+  <mat-label class="adding-screening-label"> Adding... </mat-label>
+</div>

@@ -1,0 +1,13 @@
+<div class="wo-box">
+  <h1>What's on</h1>
+  <mat-label *ngIf="!(movies?.length > 0)">No movies found</mat-label>
+  <mat-list *ngIf="movies?.length > 0" class="movies-list list-scroll">
+    <mat-list-item *ngFor="let movie of movies" class="wo-list-item">
+      <app-whats-on-movie-item
+        [movie]="movie"
+        [isFull]="isFull"
+      ></app-whats-on-movie-item>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>

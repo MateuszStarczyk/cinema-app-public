@@ -1,0 +1,25 @@
+<div fxLayoutAlign="space-between center" *ngIf="!isLoading">
+  <mat-label>{{ movie.title }}</mat-label>
+  <div>
+    <button
+      mat-raised-button
+      color="accent"
+      class="mm-list-action-button"
+      [routerLink]="['edit', movie.id]"
+    >
+      Edit
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      class="mm-list-action-button"
+      (click)="askToConfirmDeleteMovie()"
+    >
+      Delete
+    </button>
+  </div>
+</div>
+<div *ngIf="isLoading" fxLayoutAlign="start center">
+  <mat-spinner [diameter]="30"></mat-spinner>
+  <mat-label class="deleting-movie-label"> Deleting... </mat-label>
+</div>

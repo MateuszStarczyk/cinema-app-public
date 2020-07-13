@@ -1,0 +1,23 @@
+<div>
+  <div>
+  <button
+    mat-raised-button
+    color="primary"
+    class="new-ticket-button"
+    (click)="newTicketKind()"
+  >
+    New
+  </button>
+</div>
+  <mat-label id="no-tickets-admin" *ngIf="!isLoading && (!tickets || tickets.length === 0)">No tickets found</mat-label>
+  <mat-list *ngIf="!isLoading && tickets && tickets.length > 0">
+    <mat-list-item *ngFor="let ticket of tickets">
+      <app-manage-tickets-list-item
+        [ticketKind]="ticket"
+        (saved)="loadTickets()"
+        (deleted)="loadTickets()"
+      ></app-manage-tickets-list-item>
+    </mat-list-item>
+  </mat-list>
+  <mat-spinner *ngIf="isLoading" [diameter]="60"></mat-spinner>
+</div>

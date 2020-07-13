@@ -1,0 +1,23 @@
+<div fxLayoutAlign="space-between center" *ngIf="!isLoading">
+  <div>
+    <mat-label class="screening-label">Start date:</mat-label>
+    <mat-label class="screening-field">{{
+      screening.startDate | date: "HH:mm dd-MM-yyyy"
+    }}</mat-label>
+    <mat-label class="screening-label">Room:</mat-label>
+    <mat-label>{{ screening.roomId }}</mat-label>
+  </div>
+  <div>
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="askToConfirmDeleteScreening()"
+    >
+      Delete
+    </button>
+  </div>
+</div>
+<div *ngIf="isLoading" fxLayoutAlign="start center">
+  <mat-spinner [diameter]="30"></mat-spinner>
+  <mat-label class="deleting-screening-label"> Deleting... </mat-label>
+</div>

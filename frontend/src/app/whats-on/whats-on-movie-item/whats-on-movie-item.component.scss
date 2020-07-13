@@ -1,0 +1,40 @@
+.wo-item {
+  padding: 10px;
+}
+
+.more-btn {
+  margin-top: 10px;
+}
+
+.wo-poster-img {
+  height: 220px;
+  width: 160px;
+}
+
+.movie-info {
+  margin-left: 20px;
+  height: 220px;
+}
+
+.movie-dur {
+  font-weight: bold;
+}
+
+%movie-desc {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  max-height: 70px;
+  width: 30vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.full-screen {
+  @extend %movie-desc;
+  width: 75vw;
+}
+
+.half-screen {
+  @extend %movie-desc;
+  width: 30vw;
+}

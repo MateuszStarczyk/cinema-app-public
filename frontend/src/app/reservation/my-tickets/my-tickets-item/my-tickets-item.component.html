@@ -1,0 +1,17 @@
+<div fxLayoutAlign="space-between center">
+  <mat-label class="mt-label th-date">{{
+    ticket.startDate | date: "HH:mm dd-MM-yyyy"
+  }}</mat-label>
+  <mat-label class="mt-movie-title">{{ ticket.movieTitle }}</mat-label>
+  <mat-label class="mt-label">Room: {{ ticket.roomId }}</mat-label>
+  <div>
+    <button
+      mat-raised-button
+      color="primary"
+      class="mt-action-button"
+      [routerLink]="['/ticket', ticket.number]"
+    >
+      Show <mat-icon>navigate_next</mat-icon>
+    </button>
+  </div>
+</div>

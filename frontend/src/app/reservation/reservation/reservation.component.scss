@@ -1,0 +1,62 @@
+.screening-box {
+    padding: 30px;
+}
+
+.scr-date {
+    font-weight: bolder;
+}
+
+.scr-tickets {
+    margin-top: 30px;
+}
+
+.scr-bold-label {
+    font-weight: bold;
+}
+
+.scr-buy-btn {
+    margin: 0 20px 0 50px;
+}
+
+.src-price {
+    margin-left: 10px;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+.scr-selected-seats {
+    margin: 20px 0 50px 0;
+}
+
+.scr-selected-seat {
+    @extend %scr-seat-shared;
+    border: solid 2px indigo;
+    border-radius: 10px;
+}
+
+.scr-seat {
+    @extend %scr-seat-shared;
+}
+
+%scr-seat-shared {
+    padding: 5px;
+    margin: 10px 10px 10px 0;
+}
+
+.scr-seats-nb {
+    margin-left: 15px;
+}
+
+.sold-out {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    padding-top: 30px !important;
+}
+
+.outdated {
+    color: blue;
+    font-weight: bold;
+    font-style: italic;
+    padding-top: 30px !important;
+}

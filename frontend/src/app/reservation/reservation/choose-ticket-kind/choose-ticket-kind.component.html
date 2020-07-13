@@ -1,0 +1,13 @@
+<div>
+  <mat-label id="no-tickets" *ngIf="!isLoading && !(reservedTicketKinds?.length > 0)">
+    No ticket kinds found
+  </mat-label>
+  <mat-list *ngIf="!isLoading && reservedTicketKinds?.length > 0" class="tk-list">
+    <mat-divider></mat-divider>
+    <mat-list-item *ngFor="let reservedTicketKind of reservedTicketKinds" class="tk-list-item">
+      <app-choose-ticket-kind-item [reservedTicketKind]="reservedTicketKind" (qtyChange)="qtyChanged()" [availableQty]="availableSeatsQty"></app-choose-ticket-kind-item>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>
+<mat-spinner class="tk-spinner" *ngIf="isLoading" [diameter]="30"></mat-spinner>

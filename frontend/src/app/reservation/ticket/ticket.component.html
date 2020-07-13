@@ -1,0 +1,25 @@
+<div class="t-box">
+  <h1>Ticket</h1>
+  <h3>Number: {{ ticket.number }}</h3>
+  <div class="t-label">
+    <mat-label >{{ ticket.movieTitle }}</mat-label>
+  </div>
+  <div class="t-label">
+    <mat-label 
+      >{{ ticket.startDate | date: "dd.MM.yyyy HH:mm" }} ({{
+        ticket.duration
+      }}
+      min)</mat-label
+    >
+  </div>
+  <qrcode [qrdata]="ticket.number" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  <div class="t-seats-panel">
+    <mat-label>Selected seats:</mat-label>
+    <div fxLayoutAlign="start top">
+      <div class="t-selected-seat" *ngFor="let seat of ticket.selectedSeats">
+        {{ seat }}
+      </div>
+    </div>
+  </div>
+  <app-ticket-kinds [ticketKinds]="ticket.ticketKinds"></app-ticket-kinds>
+</div>

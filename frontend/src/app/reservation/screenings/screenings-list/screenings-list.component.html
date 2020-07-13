@@ -1,0 +1,15 @@
+<div>
+  <mat-label *ngIf="!isLoading && !(screenings?.length > 0)" id="no-screenings">
+    No screenings found
+  </mat-label>
+  <mat-list *ngIf="!isLoading && screenings?.length > 0">
+    <mat-list-item *ngFor="let screening of screenings">
+      <app-screenings-list-item
+        class="sc-list-item"
+        [screening]="screening"
+      ></app-screenings-list-item>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>
+<mat-spinner *ngIf="isLoading" [diameter]="60"></mat-spinner>

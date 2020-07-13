@@ -1,0 +1,67 @@
+<div class="screening-box">
+  <h1>Screening of {{ screening.movieTitle }}</h1>
+  <div>
+    <mat-label class="scr-date"
+      >{{ screening.startDate | date: "dd.MM.yyyy HH:mm" }} ({{
+        screening.duration
+      }}
+      min)</mat-label
+    >
+  </div>
+  <div *ngIf="!isSoldOut && !isOutdated" id="tickets-reservation-panel">
+    <div class="scr-tickets">
+      <mat-label class="scr-bold-label">Tickets</mat-label>
+      <app-choose-ticket-kind
+        (ticketKindsUpdated)="reservedTicketKindChanged($event)"
+        [availableSeatsQty]="availableSeatsQty - seatsQty"
+      ></app-choose-ticket-kind>
+    </div>
+    <div class="scr-selected-seats">
+      <mat-label class="scr-bold-label">Selected seats:</mat-label>
+      <div fxLayoutAlign="start top" *ngIf="!(selectedSeats?.length > 0)">
+        <mat-label class="scr-seat">No seats selected</mat-label>
+      </div>
+      <div fxLayoutAlign="start top" *ngIf="selectedSeats?.length > 0">
+        <div class="scr-selected-seat" *ngFor="let seat of selectedSeats">
+          {{ seat }}
+        </div>
+      </div>
+      <div>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openChooseSeatsModal()"
+          [disabled]="seatsQty === 0"
+        >
+          Choose seats <mat-icon>navigate_next</mat-icon>
+        </button>
+        <mat-label class="scr-seats-nb"
+          >{{ selectedSeats.length }} / {{ seatsQty }}</mat-label
+        >
+      </div>
+    </div>
+    <div fxLayoutAlign="end">
+      <div>
+        <mat-label class="scr-bold-label">Total price:</mat-label>
+        <mat-label class="src-price"
+          >{{ totalPrice | number: "1.2" }} zł</mat-label
+        >
+      </div>
+      <button
+        mat-raised-button
+        color="accent"
+        class="scr-buy-btn"
+        [disabled]="selectedSeats.length !== seatsQty || seatsQty === 0"
+        (click)="buyTicket()"
+      >
+        Buy <mat-icon>shopping_basket</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="isSoldOut" class="sold-out">
+    <mat-label id="sold-out">Sould out</mat-label>
+  </div>
+  <div *ngIf="isOutdated" class="outdated">
+    <mat-label id="outdated">The screening has already taken place</mat-label>
+  </div>
+</div>

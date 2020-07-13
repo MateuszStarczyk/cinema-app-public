@@ -1,0 +1,46 @@
+<div *ngIf="!isLoading">
+  <form #managedTicketForm="ngForm" (ngSubmit)="saveTicket()">
+    <mat-form-field 
+      appearance="outline"
+      class="mt-list-input-form-field"
+    >
+      <input 
+        matInput
+        name="name"
+        [(ngModel)]="ticketKind.name"
+        placeholder="Ticket name"
+        required>
+    </mat-form-field>
+    <mat-form-field
+      appearance="outline"
+      class="mt-list-input-form-field"
+    >
+      <input
+        matInput
+        name="price"
+        [(ngModel)]="ticketKind.price"
+        placeholder="Price"
+        type="number"
+        required>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      class="mt-list-action-button"
+      type="submit"
+      [disabled]="managedTicketForm.form.invalid"
+    >
+      Save
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      class="mt-list-action-button"
+      type="button"
+      [disabled]="!ticketKind.id"
+      (click)="askToConfirmDeleteTicket()"
+    >
+      Delete
+    </button>
+  </form>
+</div>

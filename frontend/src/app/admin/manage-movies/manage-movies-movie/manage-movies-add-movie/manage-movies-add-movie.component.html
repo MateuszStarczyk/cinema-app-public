@@ -1,0 +1,19 @@
+<ng-template
+  [ngxPermissionsOnly]="['ROLE_ADMIN']"
+  [ngxPermissionsOnlyThen]="access"
+  [ngxPermissionsOnlyElse]="noAccess"
+>
+</ng-template>
+<ng-template #access>
+  <div class="main-content">
+    <h1 class="title-text">New movie</h1>
+    <app-manage-movie-form
+      *ngIf="!isLoading"
+      (save)="addMovie($event)"
+    ></app-manage-movie-form>
+    <mat-spinner *ngIf="isLoading" [diameter]="60"></mat-spinner>
+  </div>
+</ng-template>
+<ng-template #noAccess>
+  <app-no-permissions></app-no-permissions>
+</ng-template>

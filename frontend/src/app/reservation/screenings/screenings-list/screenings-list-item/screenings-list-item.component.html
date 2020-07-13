@@ -1,0 +1,17 @@
+<div fxLayoutAlign="start center">
+  <div class="screening-item-title-box">
+    <mat-label class="screening-item-title">{{ screening.title }}</mat-label>
+    <mat-label class="screening-item-duration"
+      >({{ screening.duration }} min)</mat-label
+    >
+  </div>
+  <button
+    mat-button
+    *ngFor="let screeningItem of screening.screenings"
+    class="screening-item-label"
+    [routerLink]="'/screenings/' + screeningItem.id + '/reservation'"
+    [disabled]="hasDatePassed(screeningItem.startDate)"
+  >
+    {{ screeningItem.startDate | date: "HH:mm" }}
+  </button>
+</div>

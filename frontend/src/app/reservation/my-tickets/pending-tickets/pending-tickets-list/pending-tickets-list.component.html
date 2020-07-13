@@ -1,0 +1,12 @@
+<div>
+  <mat-label id="no-pending-tickets" *ngIf="!(tickets?.length > 0)">No tickets found</mat-label>
+  <mat-list *ngIf="tickets?.length > 0">
+    <mat-list-item *ngFor="let ticket of tickets">
+      <app-my-tickets-item
+        class="ticket-list-item"
+        [ticket]="ticket"
+      ></app-my-tickets-item>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>

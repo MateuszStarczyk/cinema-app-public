@@ -1,0 +1,26 @@
+<div>
+  <div>
+    <button
+      mat-raised-button
+      color="primary"
+      class="new-movie-button"
+      [routerLink]="['add']"
+    >
+      New
+    </button>
+  </div>
+  <mat-label id="no-movies" *ngIf="!isLoading && !(movies?.length > 0)">
+    No movies found
+  </mat-label>
+  <mat-list *ngIf="!isLoading && movies?.length > 0">
+    <mat-list-item *ngFor="let movie of movies">
+      <app-manage-movies-list-item
+        class="mm-list-item"
+        [movie]="movie"
+        (deleted)="loadMovies()"
+      ></app-manage-movies-list-item>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+  <mat-spinner *ngIf="isLoading" [diameter]="60"></mat-spinner>
+</div>

@@ -1,0 +1,21 @@
+<div fxLayoutAlign="start start" class="wo-item">
+  <div>
+    <img
+      class="wo-poster-img"
+      src="{{ movie.posterFilename }}"
+      [src-fallback]="placeholder"
+    />
+  </div>
+  <div class="movie-info">
+    <h2>{{ movie.title }}</h2>
+    <mat-label class="movie-dur">{{ movie.duration }} min</mat-label>
+    <div [ngClass]="descriptionClass">{{ movie.description }}</div>
+    <button
+      mat-raised-button
+      class="more-btn"
+      (click)="openMovieDetailsModal()"
+    >
+      More...
+    </button>
+  </div>
+</div>

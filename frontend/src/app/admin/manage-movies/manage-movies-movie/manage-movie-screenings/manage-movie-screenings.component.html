@@ -1,0 +1,23 @@
+<div>
+  <h3>Screenings</h3>
+  <app-add-screening
+    (save)="loadScreenings()"
+    [movieId]="movieId"
+  ></app-add-screening>
+  <div class="no-screenings">
+    <mat-label id="no-screenings" *ngIf="!isLoading && !(screenings?.length > 0)" >
+    No screenings found
+  </mat-label>
+</div>
+  <mat-list *ngIf="!isLoading && screenings?.length > 0">
+    <mat-list-item *ngFor="let screening of screenings">
+      <app-screening-item
+        class="ms-list-item"
+        [screening]="screening"
+        (deleted)="loadScreenings()"
+      ></app-screening-item>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+  <mat-spinner *ngIf="isLoading" [diameter]="60"></mat-spinner>
+</div>
